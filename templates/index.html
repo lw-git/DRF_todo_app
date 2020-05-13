@@ -1,9 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-	<title>To-do list</title>
-</head>
-<body>
-	<h1>Todo</h1>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>To-do list</title>
+  </head>
+  <body>
+		<div class="container">
+	    <div class="row">
+	      <div class="col-lg-8 mx-auto">
+	        <div class="card">
+	          <div class="card-header bg-primary text-white">
+	            <h1>Todo:</h1>
+	          </div>
+	          <div class="card-body">
+	              Completed: 
+	              <input type="checkbox" id="completed" />
+	              <input type="hidden" id="taskId" value="" />
+	              <div class="add-items d-flex mb-4"> 
+	                <input class="form-control" type="text" id="title" value="" />
+	                <button id="submit" class="btn btn-primary">Create</button>  
+	              </div>
+	            <div id="res"></div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>    
+    <script src="{% static 'js/base.js' %}"></script>
+  </body>
 </html>
