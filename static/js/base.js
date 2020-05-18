@@ -1,18 +1,20 @@
+const instance = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api/'
+});
+
 document.addEventListener('DOMContentLoaded', function(){
   getTodos()
   document.getElementById('submit').addEventListener('click', do_create);
 });
 
 function getTodos() {
-  axios
-    .get('http://127.0.0.1:8000/api/')
+  instance.get()
     .then(res => renderList(res))
     .catch(err => console.error(err));
 }
 
 function addTodo(title, completed) {
-  axios
-    .post('http://127.0.0.1:8000/api/create/', {
+  instance.post('create/', {
       title: title,
       completed: completed
     })
@@ -21,8 +23,7 @@ function addTodo(title, completed) {
 }
 
 function updateTodo(taskId, title, completed) {
-  axios
-    .patch(`http://127.0.0.1:8000/api/${taskId}/update/`, {
+  instance.patch(`${taskId}/update/`, {
       title: title,
       completed: completed
     })
@@ -31,8 +32,7 @@ function updateTodo(taskId, title, completed) {
 }
 
 function removeTodo(taskId) {
-  axios
-    .delete(`http://127.0.0.1:8000/api/${taskId}/delete/`)
+  instance.delete(`${taskId}/delete/`)
     .then(() => getTodos())
     .catch(err => console.error(err));
 }
